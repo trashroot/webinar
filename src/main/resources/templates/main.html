@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+		
+<head th:replace="~{common/header::common_header}">
+	
+</head>
+<body>
+<div th:replace="~{common/navbar::common_navbar}"></div>
+<div class="container">
+	<div class="container">		
+		<div class="mx-auto text-center">		  
+		  <h2 class="fw-bold" th:text="#{app.title}"></h2>		  
+		</div>
+		<div class="mt-4 text-center mx-auto" style="width:97%;">
+			<input class="w-100 border rounded-pill ps-4" type="text" name="findwebinar" value="" placeholder="Search..." />
+		</div>
+	</div>
+	
+	<div class="container mt-4">
+		<div class="d-flex flex-wrap">
+			<div th:each="event: ${events}" class="p-2" style="width:25%;">
+				<div class="card mx-auto" style="width: 15rem;">
+					<div class="card-body">
+						<img src="card-holder1.png" class="card-img-top" alt="">
+					</div>
+				  
+				  <div class="card-body">
+				    <h5 class="card-title" th:text="${event.title}"></h5>
+				    <p class="card-text" th:text="${event.desc}"></p>				    
+				  </div>
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item"><span class="fw-bold">Date:</span> <span th:text="${event.occurs_on}"></span></li>
+				    <li class="list-group-item"><span class="fw-bold">Timing: </span> <span th:text="${event.start_at}"></span> till <span th:text="${event.end_at}"></span></li>				    
+				  </ul>
+				  <div class="card-body">
+				    <a href="details.html" th:href="@{/details}" class="card-link">Details</a>
+				  </div>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>
+
+</body>
+</html>

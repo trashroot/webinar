@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+		
+<head th:replace="~{common/header::common_header}">
+	
+</head>
+<body>
+
+	<div class="container">
+		<div class="mt-4 position-relative">
+			<h2>List</h2>
+			<a th:href="@{/manage/addWebinar}">
+			<button class="btn btn-primary btn-sm col-1 position-absolute top-0 end-0">
+			Add</button></a>
+		</div>
+		<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Timing</th>
+      <th scope="col">Venue</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="event, item: ${events}">
+      <th scope="row" th:text="${item.count}"></th>
+      <td th:text="${event.title}"></td>
+      <td th:text="${event.occurs_on}"></td>
+      <td th:text="${event.start_at}"></td>
+      <td th:text="${event.venue}"></td>
+      <td>
+      	<span class="me-2"><a th:href="@{/manage/edit/{id}(id=${event.id})}" title="Edit"><i class="bi bi-pencil-square"></i></a></span>
+      	<span><a th:href="@{/manage/delete/{id}(id=${event.id})}" title="Delete"><i class="bi bi-trash3" ></i></a></span>
+      </td>
+    </tr>    
+  </tbody>
+</table>
+	</div>
+</body>
+</html>
