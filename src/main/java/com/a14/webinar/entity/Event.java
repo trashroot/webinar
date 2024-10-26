@@ -3,8 +3,11 @@ package com.a14.webinar.entity;
 
 /*import java.sql.Time;
 import java.sql.Date;*/
-
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Event {
@@ -12,49 +15,49 @@ public class Event {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String title;
-	
+
 	@Column(columnDefinition = "TEXT")
 	private String description;
-	
+
 	private String image;
-	
-	private String occurs_on;
-	
-	private String start_at;
-	
-	private String end_at;
-	
+
+	private String occursOn;
+
+	private String startAt;
+
+	private String endAt;
+
 	private String venue;
-	
+
 	private String city;
-	
+
 	private String country;
-	
+
 	private String organizer;
-	
+
 //	private Boolean invite_only;
-	
-	private String created_by;
-	
+
+	private Integer createdBy;
+
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", title=" + title + ", desc=" + description + ", image=" + image + ", occurs_on="
-				+ occurs_on + ", start_at=" + start_at + ", end_at=" + end_at + ", venue=" + venue + ", city=" + city
-				+ ", country=" + country + ", organizer=" + organizer + ", created_by=" + created_by + "]";
+				+ occursOn + ", start_at=" + startAt + ", end_at=" + endAt + ", venue=" + venue + ", city=" + city
+				+ ", country=" + country + ", organizer=" + organizer + ", created_by=" + createdBy + "]";
 	}
 
-	public String getCreated_by() {
-		return created_by;
+	public Integer getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setCreated_by(String created_by) {
-		this.created_by = created_by;
+	public void setCreatedBy(Integer created_by) {
+		this.createdBy = created_by;
 	}
 
 	public Event() {
-		
+
 	}
 
 	public Event(int id, String title, String desc, String image, String occurs_on, String start_at, String end_at,
@@ -64,9 +67,9 @@ public class Event {
 		this.title = title;
 		this.description = desc;
 		this.image = image;
-		this.occurs_on = occurs_on;
-		this.start_at = start_at;
-		this.end_at = end_at;
+		this.occursOn = occurs_on;
+		this.startAt = start_at;
+		this.endAt = end_at;
 		this.venue = venue;
 		this.city = city;
 		this.country = country;
@@ -77,7 +80,7 @@ public class Event {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -106,28 +109,28 @@ public class Event {
 		this.image = image;
 	}
 
-	public String getOccurs_on() {
-		return occurs_on;
+	public String getOccursOn() {
+		return occursOn;
 	}
 
-	public void setOccurs_on(String occurs_on) {
-		this.occurs_on = occurs_on;
+	public void setOccursOn(String occurs_on) {
+		this.occursOn = occurs_on;
 	}
 
-	public String getStart_at() {
-		return start_at;
+	public String getStartAt() {
+		return startAt;
 	}
 
-	public void setStart_at(String start_at) {
-		this.start_at = start_at;
+	public void setStartAt(String start_at) {
+		this.startAt = start_at;
 	}
 
-	public String getEnd_at() {
-		return end_at;
+	public String getEndAt() {
+		return endAt;
 	}
 
-	public void setEnd_at(String end_at) {
-		this.end_at = end_at;
+	public void setEndAt(String end_at) {
+		this.endAt = end_at;
 	}
 
 	public String getVenue() {
@@ -170,6 +173,6 @@ public class Event {
 //		this.invite_only = invite_only;
 //	}
 
-	
-	
+
+
 }

@@ -14,31 +14,31 @@ public class EventDto {
 		private int id;
 
 		private String title;
-		
+
 		private String description;
-		
+
 		private String image;
-		
+
 		private String occurs_on;
-		
+
 		private String start_at;
-		
+
 		private String end_at;
-		
+
 		private String venue;
-		
+
 		private String city;
-		
+
 		private String country;
-		
+
 		private String organizer;
-		
+
 //		private Boolean invite_only;
-		
+
 		private String created_by;
-		
+
 		public EventDto() {
-			super();			
+			super();
 		}
 
 		public EventDto(int id, String title, String desc, String image, String occurs_on, String start_at,
@@ -153,5 +153,5 @@ public class EventDto {
 		public void setCreated_by(String created_by) {
 			this.created_by = created_by;
 		}
-		
+
 }

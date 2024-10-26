@@ -1,11 +1,11 @@
 package com.a14.webinar.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.a14.webinar.entity.Event;
+import com.a14.webinar.error.ResourceNotFound;
 import com.a14.webinar.repository.EventRepository;
 
 import jakarta.transaction.Transactional;
@@ -14,27 +14,33 @@ import jakarta.transaction.Transactional;
 public class EventService {
 
 private EventRepository eventRepo;
-	
+
 	public EventService(EventRepository eventRepo) {
 		this.eventRepo = eventRepo;
 	}
-	
-	
-	public List<Event> getAllEvents(){		
-		return eventRepo.findAll();		
+
+
+	public List<Event> getAllEvents(){
+		return eventRepo.findAll();
 	}
 	
+	public List<Event> getUserEvents(int id){		
+		return eventRepo.findByCreatedByOrderByIdDesc(id).stream().toList();
+	}
+	
+	
+
 	@Transactional
 	public Event saveEvent(Event event) {
 		return eventRepo.save(event);
 	}
-	
-	public Optional<Event> getEventById(Integer id) {
-		return eventRepo.findById(id);
+
+	public Event getEventById(Integer id) {
+		return eventRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Event not found."));
 	}
-	
+
 	@Transactional
 	public void deleteEvent(Integer id) {
-		eventRepo.deleteById(id);
+		eventRepo.findById(id).ifPresentOrElse(eventRepo::delete, () -> new ResourceNotFound("Event not found."));
 	}
 }

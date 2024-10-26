@@ -31,11 +31,11 @@
 				    <p class="card-text" th:text="${event.desc}"></p>				    
 				  </div>
 				  <ul class="list-group list-group-flush">
-				    <li class="list-group-item"><span class="fw-bold">Date:</span> <span th:text="${event.occurs_on}"></span></li>
-				    <li class="list-group-item"><span class="fw-bold">Timing: </span> <span th:text="${event.start_at}"></span> till <span th:text="${event.end_at}"></span></li>				    
+				    <li class="list-group-item"><span class="fw-bold">Date:</span> <span th:text="${event.occursOn}"></span></li>
+				    <li class="list-group-item"><span class="fw-bold">Timing: </span> <span th:text="${event.startAt}"></span> till <span th:text="${event.endAt}"></span></li>				    
 				  </ul>
 				  <div class="card-body">
-				    <a href="details.html" th:href="@{/details}" class="card-link">Details</a>
+				    <a href="details.html" th:href="@{/details/{id}(id=${event.id})}" class="card-link">Details</a>
 				  </div>
 				</div>
 			</div>

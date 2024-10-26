@@ -7,7 +7,7 @@
 	
 </head>
 <body>
-
+<div th:replace="~{common/navbar::common_navbar}"></div>
 	<div class="container">
 		<div class="mt-4 position-relative">
 			<h2>List</h2>
@@ -30,8 +30,8 @@
     <tr th:each="event, item: ${events}">
       <th scope="row" th:text="${item.count}"></th>
       <td th:text="${event.title}"></td>
-      <td th:text="${event.occurs_on}"></td>
-      <td th:text="${event.start_at}"></td>
+      <td th:text="${event.occursOn}"></td>
+      <td th:text="${event.startAt}"></td>
       <td th:text="${event.venue}"></td>
       <td>
       	<span class="me-2"><a th:href="@{/manage/edit/{id}(id=${event.id})}" title="Edit"><i class="bi bi-pencil-square"></i></a></span>
