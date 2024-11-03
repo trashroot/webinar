@@ -30,20 +30,20 @@ public class HomeController {
 
 	@GetMapping("/")
 	public ModelAndView index() {
-		List<Event> data = eventService.getAllEvents();
+		List<Event> data = eventService.getActiveEvents();
 		return new ModelAndView("main","events",data);
 	}
 
 	@GetMapping("/webinar")
 	public ModelAndView home() {
-		List<Event> data = eventService.getAllEvents();
+		List<Event> data = eventService.getActiveEvents();
 		return new ModelAndView("main","events",data);
 	}
 	
 	@GetMapping("/details/{id}")
 	public ModelAndView details(@PathVariable("id") int id) {
 		Event data = eventService.getEventById(id);
-		return new ModelAndView("edit","event",data);
+		return new ModelAndView("details","event",data);
 	}
 
 }

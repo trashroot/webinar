@@ -27,15 +27,15 @@ public class AuthConfig {
  	@Bean
  	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
  		http.csrf((cs) -> cs.disable());
- 		http.authorizeHttpRequests((request) -> 
- 					request.requestMatchers("/","/card-holder1.png","/account/login","/account/register","/css/*","/js/*")
- 					.permitAll()
- 					.anyRequest().authenticated());
- 		http.userDetailsService(userservice);
- 		http.formLogin(form -> form.loginPage("/account/login").permitAll()
- 									.loginProcessingUrl("/account/loginaccount")
- 									.defaultSuccessUrl("/manage/list"));
- 		http.logout(LogoutConfigurer::permitAll);
+// 		http.authorizeHttpRequests((request) -> 
+// 					request.requestMatchers("/","/account/login","/account/register","/css/**","/js/**","/img/**","/fonts/**")
+// 					.permitAll()
+// 					.anyRequest().authenticated());
+// 		http.userDetailsService(userservice);
+// 		http.formLogin(form -> form.loginPage("/account/login").permitAll()
+// 									.loginProcessingUrl("/account/loginaccount")
+// 									.defaultSuccessUrl("/manage/list"));
+// 		http.logout(LogoutConfigurer::permitAll);
  		return http.build();
 
  	}

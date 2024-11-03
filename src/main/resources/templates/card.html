@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+		
+<body>
+	<div class="container">	
+		<div th:fragment="card" class="container">
+			<div class="product-section">
+			  <div class="product-card" th:each="event: ${events}">
+			    <div class="image-container">
+			      <img src="card-holder1.png" alt="Tech">		      
+			    </div>
+			    <div class="product-info">
+			      <h2 th:text="${event.title}"></h2>
+			      <p th:text="${event.description}"></p>
+			      <div class="flx tags">
+			        <span class="tag" th:text="${event.occursOn}"></span>
+			        <span class="tag" th:text="${event.country}"></span>
+			        <span class="tag">Set Reminder</span>		        
+			      </div>
+			      <div class="flx price-order" >
+			        <!-- <span class="price"></span>	 -->
+			        <a class="details" th:href="@{/details/{id}(id=${event.id})}">Details</a>
+			        <!-- <a th:href="@{/details/{id}(id=${event.id})}">Set Reminder</a> -->	        
+			        <a th:if="${event.inviteOnly}" th:href="@{/event/{id}/register(id=${event.id})}"><button class="order-button">Register</button></a>
+			        
+			      </div>
+			    </div>
+			  </div>
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

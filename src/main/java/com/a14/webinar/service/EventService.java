@@ -1,5 +1,6 @@
 package com.a14.webinar.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -13,8 +14,10 @@ import jakarta.transaction.Transactional;
 @Service
 public class EventService {
 
-private EventRepository eventRepo;
-
+	private EventRepository eventRepo;
+	
+	LocalDate currentDate = LocalDate.now();
+	
 	public EventService(EventRepository eventRepo) {
 		this.eventRepo = eventRepo;
 	}
@@ -23,6 +26,12 @@ private EventRepository eventRepo;
 	public List<Event> getAllEvents(){
 		return eventRepo.findAll();
 	}
+	
+	public List<Event> getActiveEvents(){
+		return eventRepo.findByOccursOnGreaterThanAndPublishedAndApprovedOrderByOccursOnDesc(currentDate.toString(), 1,1 );
+	}
+	
+	
 	
 	public List<Event> getUserEvents(int id){		
 		return eventRepo.findByCreatedByOrderByIdDesc(id).stream().toList();

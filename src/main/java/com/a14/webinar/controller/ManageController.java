@@ -34,31 +34,31 @@ public class ManageController {
 	@GetMapping("/list")
 	public ModelAndView index(Principal p) {
 		
-		if(p != null && p.getName().isBlank()) {
-			throw new ResourceNotFound("Event not found.");
-		}
-		
-		User u = userService.getUserByEmail(p.getName());
-		
-		if(u == null) {
-			throw new ResourceNotFound("User does not exist.");
-		}
-		
-		List<Event> data = eventService.getUserEvents(u.getId());
+//		if(p == null) {
+//			throw new ResourceNotFound("Event not found.");
+//		}
+//		
+//		User u = userService.getUserByEmail(p.getName());
+//		
+//		if(u == null) {
+//			throw new ResourceNotFound("User does not exist.");
+//		}
+//		
+//		List<Event> data = eventService.getUserEvents(u.getId());
+		List<Event> data = eventService.getUserEvents(5);
 		return new ModelAndView("manage/list","events",data);
 	}
 
-	@GetMapping("/addWebinar")
+	@GetMapping("/addEvent")
 	public String addWebinar(Model model) {
-		EventDto event = new EventDto();
-		model.addAttribute("event",event);
-		return "add";
+		model.addAttribute("event",new EventDto());
+		return "manage/add";
 	}
 
 	@PostMapping("/add")
 	public String newWebinar(@ModelAttribute("event") Event event) {
 		eventService.saveEvent(event);
-		return "redirect:/webinar";
+		return "redirect:/manage/list";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -72,7 +72,7 @@ public class ManageController {
 			model.addAttribute("message",e.getMessage());
 
 		}
-		return "edit";
+		return "manage/edit";
 	}
 
 	@PostMapping("/saveEdit")

@@ -37,44 +37,40 @@ public class Event {
 
 	private String organizer;
 
-//	private Boolean invite_only;
-
+	private Boolean inviteOnly;
+	
 	private Integer createdBy;
-
-	@Override
-	public String toString() {
-		return "Event [id=" + id + ", title=" + title + ", desc=" + description + ", image=" + image + ", occurs_on="
-				+ occursOn + ", start_at=" + startAt + ", end_at=" + endAt + ", venue=" + venue + ", city=" + city
-				+ ", country=" + country + ", organizer=" + organizer + ", created_by=" + createdBy + "]";
-	}
-
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(Integer created_by) {
-		this.createdBy = created_by;
-	}
-
+	
+	private Integer published;
+	
+	private Integer approved;
+	
+	private Integer approvedBy;
+	
 	public Event() {
-
+		
 	}
 
-	public Event(int id, String title, String desc, String image, String occurs_on, String start_at, String end_at,
-			String venue, String city, String country, String organizer, Boolean invite_only) {
+	public Event(int id, String title, String description, String image, String occursOn, String startAt, String endAt,
+			String venue, String city, String country, String organizer, Boolean inviteOnly, Integer createdBy,
+			Integer published, Integer approved, Integer approvedBy) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.description = desc;
+		this.description = description;
 		this.image = image;
-		this.occursOn = occurs_on;
-		this.startAt = start_at;
-		this.endAt = end_at;
+		this.occursOn = occursOn;
+		this.startAt = startAt;
+		this.endAt = endAt;
 		this.venue = venue;
 		this.city = city;
 		this.country = country;
 		this.organizer = organizer;
-//		this.invite_only = invite_only;
+		this.inviteOnly = inviteOnly;
+		this.createdBy = createdBy;
+		this.published = published;
+		this.approved = approved;
+		this.approvedBy = approvedBy;
 	}
 
 	public int getId() {
@@ -93,12 +89,12 @@ public class Event {
 		this.title = title;
 	}
 
-	public String getDesc() {
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.description = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getImage() {
@@ -113,24 +109,24 @@ public class Event {
 		return occursOn;
 	}
 
-	public void setOccursOn(String occurs_on) {
-		this.occursOn = occurs_on;
+	public void setOccursOn(String occursOn) {
+		this.occursOn = occursOn;
 	}
 
 	public String getStartAt() {
 		return startAt;
 	}
 
-	public void setStartAt(String start_at) {
-		this.startAt = start_at;
+	public void setStartAt(String startAt) {
+		this.startAt = startAt;
 	}
 
 	public String getEndAt() {
 		return endAt;
 	}
 
-	public void setEndAt(String end_at) {
-		this.endAt = end_at;
+	public void setEndAt(String endAt) {
+		this.endAt = endAt;
 	}
 
 	public String getVenue() {
@@ -165,14 +161,44 @@ public class Event {
 		this.organizer = organizer;
 	}
 
-//	public Boolean getInvite_only() {
-//		return invite_only;
-//	}
-//
-//	public void setInvite_only(Boolean invite_only) {
-//		this.invite_only = invite_only;
-//	}
+	public Boolean getInviteOnly() {
+		return inviteOnly;
+	}
 
+	public void setInviteOnly(Boolean inviteOnly) {
+		this.inviteOnly = inviteOnly;
+	}
 
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Integer getPublished() {
+		return published;
+	}
+
+	public void setPublished(Integer published) {
+		this.published = published;
+	}
+
+	public Integer getApproved() {
+		return approved;
+	}
+
+	public void setApproved(Integer approved) {
+		this.approved = approved;
+	}
+
+	public Integer getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(Integer approvedBy) {
+		this.approvedBy = approvedBy;
+	}
 
 }

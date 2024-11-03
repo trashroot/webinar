@@ -95,12 +95,14 @@ public class UserController {
 			return "account/register?error";
 
 		}catch (ResourceNotFound e){
+			
 			String encodedPassword = passwordEncoder.encode(user.getPassword());
 			user.setPassword(encodedPassword);
+			
 			User usr = userService.saveUser(getMappeduser(user));
 			if(usr != null) {
 				return "redirect:/account/login?success";
-			}			
+			}
 		}
 		return "account/register?error";
 	}
@@ -117,6 +119,7 @@ public class UserController {
 		usr.setName(user.getName());
 		usr.setPassword(user.getPassword());
 		usr.setPhone(user.getPhone());
+		usr.setRole("ROLE_USER");
 		return usr;
 	}
 

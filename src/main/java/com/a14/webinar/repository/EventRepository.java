@@ -9,6 +9,7 @@ import com.a14.webinar.entity.Event;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event,Integer>{
-
+	
 	List<Event> findByCreatedByOrderByIdDesc(int id);
+	List<Event> findByOccursOnGreaterThanAndPublishedAndApprovedOrderByOccursOnDesc(String startDate, int published, int approved);
 }
