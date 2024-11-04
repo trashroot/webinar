@@ -16,17 +16,19 @@
 </head>
 <body >
 
-<div th:replace="~{header::header}"></div>
-
-<div class="container">	
-	<form method="post" action="#">
-		<div class="common-des-search description">Find your favourite and nearest event</div>
-		<div class="common-des-search search">
-			<input type="text" name"search" value="" /> <button class="search-btn" type="submit">Search</button>
-		</div>
-	</form>
-	<div class="container" th:replace="~{card::card}"></div>
+<div th:fragment="header" class="menu-back mb-3 pb-4">
+	<div class="container-fluid">
+		<nav>
+			<span><a th:href="@{/}"  th:text="#{app.name}"></a></span>
+			<div>
+				<span>Publish an event </span>
+				<a th:href="@{/account/login}">
+				<button type="button">Login / Register</Button>
+				</a>
+				
+			</div>
+		</nav>
+	</div>
 </div>
-
 </body>
 </html>
